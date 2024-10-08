@@ -82,7 +82,7 @@ android {
          resValue(
             "string",
             "app_name",
-            "Rodrigo Javier"
+            "Rodrigo Javier test"
          )
 
          buildConfigField(
