@@ -23,5 +23,7 @@ jobs:
         run: chmod +x ./gradlew
       - name: Build app
         run: ./gradlew assemble
+      - name: Touch local properties
+        run: touch local.properties
 
 
