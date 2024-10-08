@@ -2,7 +2,7 @@ package cl.rodrigo_javier_garrido_dagle.mobiledevtest
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
-import cl.rodrigo_javier_garrido_dagle.mobiledevtest.utilities.ConnectivityRepository
+import cl.rodrigo_javier_garrido_dagle.mobiledevtest.data.repositories.ConnectivityRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
