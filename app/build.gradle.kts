@@ -1,6 +1,20 @@
+import java.util.Properties
+
+val properties: Properties = Properties()
+
+properties.load(
+   project.rootProject
+      .file("local.properties")
+      .inputStream()
+)
+
 plugins {
    alias(libs.plugins.android.application)
    alias(libs.plugins.jetbrains.kotlin.android)
+   //   added
+   alias(libs.plugins.android.dagger.hilt)
+   id("kotlin-android")
+   id("kotlin-kapt")
 }
 
 android {
@@ -21,8 +35,16 @@ android {
    }
 
    buildTypes {
+      debug {
+         applicationIdSuffix = ".debug"
+         isDebuggable = true
+         isMinifyEnabled = false
+      }
+
       release {
          isMinifyEnabled = false
+         isShrinkResources = false
+         isDebuggable = false
          proguardFiles(
             getDefaultProguardFile("proguard-android-optimize.txt"),
             "proguard-rules.pro"
@@ -38,6 +60,7 @@ android {
    }
    buildFeatures {
       compose = true
+      buildConfig = true
    }
    composeOptions {
       kotlinCompilerExtensionVersion = "1.5.1"
@@ -47,6 +70,37 @@ android {
          excludes += "/META-INF/{AL2.0,LGPL2.1}"
       }
    }
+
+
+   flavorDimensions += "version"
+   productFlavors {
+
+      create("Test") {
+         applicationIdSuffix = ".Test"
+         versionNameSuffix = "1_Test"
+
+         resValue(
+            "string",
+            "app_name",
+            "Rodrigo Javier"
+         )
+
+         buildConfigField(
+            "String",
+            "URL_BASE",
+            properties.getProperty("URL_BASE")
+         )
+
+         buildConfigField(
+            "String",
+            "URL_ENDPOINT",
+            properties.getProperty("URL_ENDPOINT")
+         )
+
+      }
+
+   }
+
 }
 
 dependencies {
@@ -66,4 +120,43 @@ dependencies {
    androidTestImplementation(libs.androidx.ui.test.junit4)
    debugImplementation(libs.androidx.ui.tooling)
    debugImplementation(libs.androidx.ui.test.manifest)
+   // TESTS ADDED
+   testImplementation(libs.mokk)
+   testImplementation(libs.mockitocore)
+   testImplementation(libs.mockitoinline)
+//   picasso
+   implementation(libs.androidx.picasso)
+   //    retrofit
+   implementation(libs.androidx.retrofit)
+   implementation(libs.androidx.retrofitgson)
+// okhttp
+   implementation(libs.okhttp)
+   implementation(libs.googlegson)
+   implementation(libs.okhttp.interceptor)
+   //    coroutines
+   implementation(libs.androidx.coroutines)
+   implementation(libs.androidx.coroutinesandroid)
+   //   coroutine lifecycle scopes
+   implementation(libs.androidx.activityktx)
+   implementation(libs.androidx.lifecyclesextensions)
+   implementation(libs.androidx.lifecycle)
+   implementation(libs.androidx.lifecycle)
+   implementation(libs.androidx.lifecycle.runtime.ktx)
+   // KTX - Viewmodel Y Livedata NO ACTUALIZAR: 2.5.1
+   implementation(libs.androidx.lifecycle.livedata)
+   //    data store
+   implementation(libs.androidx.datastore)
+   //Room
+   implementation(libs.room)
+   kapt(libs.roomkaptcompiler)
+   implementation(libs.androidx.room.runtime)
+   //Hilt
+   implementation(libs.dagger.google)
+   implementation(libs.androidx.hilt.navigation.compose.v120)
+   annotationProcessor(libs.androidx.google.compiler)
+   kapt(libs.androidx.google.dagger.kapt.android)
+   kapt(libs.androidx.google.compiler)
+   kapt(libs.androidx.hilt.compiler.v120)
 }
+
+//kapt { correctErrorTypes = true }
