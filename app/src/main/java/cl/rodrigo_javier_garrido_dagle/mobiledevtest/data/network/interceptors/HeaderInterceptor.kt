@@ -6,8 +6,6 @@ import javax.inject.Inject
 
 class HeaderInterceptor @Inject constructor() : Interceptor {
 
-
-   // for all retrofit calls
    override fun intercept(chain: Interceptor.Chain): Response {
       val request = chain
          .request()
