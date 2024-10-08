@@ -1,7 +1,8 @@
 package cl.rodrigo_javier_garrido_dagle.mobiledevtest.di
 
-import cl.rodrigo_javier_garrido_dagle.mobiledevtest.BuildConfig.URL_BASE
+import cl.rodrigo_javier_garrido_dagle.mobiledevtest.data.network.ApiCalls
 import cl.rodrigo_javier_garrido_dagle.mobiledevtest.data.network.interceptors.HeaderInterceptor
+import cl.rodrigo_javier_garrido_dagle.mobiledevtest.utilities.Constants.URL_BASE
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -40,12 +41,12 @@ object NetworkModule {
    }
 
    @Provides
-   fun provideHoroscopeApiService(retrofit: Retrofit): HoroscopeApiService {
-      return retrofit.create(HoroscopeApiService::class.java)
+   fun provideApiService(retrofit: Retrofit): ApiCalls {
+      return retrofit.create(ApiCalls::class.java)
    }
 
    @Provides
-   fun provideRepository(apiService: HoroscopeApiService): Repository {
+   fun provideRepository(apiService: ApiCalls): Repository {
       return RepositoryImpl(apiService)
    }
 }
