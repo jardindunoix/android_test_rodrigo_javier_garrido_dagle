@@ -1,4 +1,4 @@
-package cl.rodrigo_javier_garrido_dagle.mobile_test.domain.model
+package cl.rodrigo_javier_garrido_dagle.mobiledevtest.domain.model
 
 data class StoryUrl(
    val matchLevel: String,

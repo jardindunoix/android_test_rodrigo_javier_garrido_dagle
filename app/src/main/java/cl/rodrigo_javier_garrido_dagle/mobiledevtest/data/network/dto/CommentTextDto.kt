@@ -1,4 +1,4 @@
-package cl.rodrigo_javier_garrido_dagle.mobile_test.data.network.dto
+package cl.rodrigo_javier_garrido_dagle.mobiledevtest.data.network.dto
 
 import com.google.gson.annotations.SerializedName
 

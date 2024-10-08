@@ -1,7 +1,7 @@
-package cl.rodrigo_javier_garrido_dagle.mobiledevtest.di
+package cl.rodrigo_javier_garrido_dagle.mobiledevtest.data.network
 
-import cl.rodrigo_javier_garrido_dagle.mobiledevtest.data.network.ApiCalls
 import cl.rodrigo_javier_garrido_dagle.mobiledevtest.data.network.interceptors.HeaderInterceptor
+import cl.rodrigo_javier_garrido_dagle.mobiledevtest.domain.repositories.NetworkRepository
 import cl.rodrigo_javier_garrido_dagle.mobiledevtest.utilities.Constants.URL_BASE
 import dagger.Module
 import dagger.Provides
@@ -46,7 +46,7 @@ object NetworkModule {
    }
 
    @Provides
-   fun provideRepository(apiService: ApiCalls): Repository {
-      return RepositoryImpl(apiService)
+   fun provideNetworkRepository(apiService: ApiCalls): NetworkRepository {
+      return NetworkRepositoryImpl(apiService)
    }
 }
