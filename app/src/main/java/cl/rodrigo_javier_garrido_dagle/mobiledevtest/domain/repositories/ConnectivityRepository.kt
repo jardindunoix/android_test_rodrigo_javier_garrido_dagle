@@ -1,4 +1,4 @@
-package cl.rodrigo_javier_garrido_dagle.mobiledevtest.utilities
+package cl.rodrigo_javier_garrido_dagle.mobiledevtest.domain.repositories
 
 import android.content.Context
 import android.net.ConnectivityManager

@@ -1,0 +1,1 @@
+package cl.rodrigo_javier_garrido_dagle.mobiledevtest.ui.themeimport androidx.compose.ui.text.font.Fontimport androidx.compose.ui.text.font.FontFamilyimport androidx.compose.ui.text.font.FontWeightimport cl.rodrigo_javier_garrido_dagle.mobiledevtest.Rval montserratFont = FontFamily(   Font(      R.font.montserrat_regular,      FontWeight.Light   ),)
