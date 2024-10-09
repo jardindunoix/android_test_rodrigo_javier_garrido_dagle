@@ -28,11 +28,11 @@ class MainViewModel @Inject constructor(
 
          list!!.map { hit ->
             val author = hit.author
-            val title = if (hit.title != null) hit.title else hit.storyTitle
-            val storyLink = if (hit.storyUrl != null) hit.storyUrl else "no link"
-            val storyText = if (hit.storyText != null) hit.storyText else hit.commentText
             val createdAtId = hit.createdAtI
-            val storyDate = if (hit.updatedAt != null) hit.updatedAt else hit.createdAt
+            val title = hit.title ?: hit.storyTitle
+            val storyLink = hit.storyUrl ?: "no link"
+            val storyText = hit.storyText ?: hit.commentText
+            val storyDate = hit.updatedAt ?: hit.createdAt
 
             Log.d(
                TAG,
