@@ -1,6 +1,6 @@
 package cl.rodrigo_javier_garrido_dagle.mobiledevtest.domain.model
 
-data class StoryTitle(
+data class Url(
     val matchLevel: String,
     val matchedWords: List<Any>,
     val value: String

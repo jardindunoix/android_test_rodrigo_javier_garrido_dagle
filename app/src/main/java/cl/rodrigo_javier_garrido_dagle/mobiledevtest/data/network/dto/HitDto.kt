@@ -3,28 +3,41 @@ package cl.rodrigo_javier_garrido_dagle.mobiledevtest.data.network.dto
 import com.google.gson.annotations.SerializedName
 
 data class HitDto(
-   @SerializedName("_highlightResult")
+
+   @SerializedName(value = "_highlightResult")
    val highlightResult: HighlightResultDto,
-   @SerializedName("_tags")
+   @SerializedName(value = "_tags")
    val tags: List<String>,
-   @SerializedName("author")
+   @SerializedName(value = "author")
    val author: String,
-   @SerializedName("comment_text")
+   @SerializedName(value = "children")
+   val children: List<Int>,
+   @SerializedName(value = "comment_text")
    val commentText: String,
-   @SerializedName("created_at")
+   @SerializedName(value = "created_at")
    val createdAt: String,
-   @SerializedName("created_at_i")
+   @SerializedName(value = "created_at_i")
    val createdAtI: Int,
-   @SerializedName("objectID")
+   @SerializedName(value = "num_comments")
+   val numComments: Int,
+   @SerializedName(value = "objectID")
    val objectID: String,
-   @SerializedName("parent_id")
+   @SerializedName(value = "parent_id")
    val parentId: Int,
-   @SerializedName("story_id")
+   @SerializedName(value = "points")
+   val points: Int,
+   @SerializedName(value = "story_id")
    val storyId: Int,
-   @SerializedName("story_title")
+   @SerializedName(value = "story_text")
+   val storyText: String,
+   @SerializedName(value = "story_title")
    val storyTitle: String,
-   @SerializedName("story_url")
+   @SerializedName(value = "story_url")
    val storyUrl: String,
-   @SerializedName("updated_at")
-   val updatedAt: String
+   @SerializedName(value = "title")
+   val title: String,
+   @SerializedName(value = "updated_at")
+   val updatedAt: String,
+   @SerializedName(value = "url")
+   val url: String
 )
