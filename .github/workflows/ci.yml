@@ -2,9 +2,9 @@ name: Android CI
 
 on:
   push:
-    branches: [ "network-repository" ]
+    branches: [ "database" ]
   pull_request:
-    branches: [ "network-repository" ]
+    branches: [ "database" ]
 
 jobs:
   build:
