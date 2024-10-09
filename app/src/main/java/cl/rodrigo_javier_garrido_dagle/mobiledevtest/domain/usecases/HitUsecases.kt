@@ -4,7 +4,7 @@ import cl.rodrigo_javier_garrido_dagle.mobiledevtest.domain.mappers.networkToDom
 import cl.rodrigo_javier_garrido_dagle.mobiledevtest.domain.repositories.NetworkRepositoryImpl
 import javax.inject.Inject
 
-class NetworkUsecases @Inject constructor(
+class HitUsecases @Inject constructor(
     private val networkRepository: NetworkRepositoryImpl,
 ) {
     suspend operator fun invoke() = networkRepository
