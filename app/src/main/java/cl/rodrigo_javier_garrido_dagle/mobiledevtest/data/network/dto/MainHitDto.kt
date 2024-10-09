@@ -1,17 +1,19 @@
 package cl.rodrigo_javier_garrido_dagle.mobiledevtest.data.network.dto
 
+import com.google.gson.annotations.SerializedName
+
 data class MainHitDto(
-    val exhaustive: ExhaustiveDto,
-    val exhaustiveNbHits: Boolean,
-    val exhaustiveTypo: Boolean,
-    val hits: List<HitDto>,
-    val hitsPerPage: Int,
-    val nbHits: Int,
-    val nbPages: Int,
-    val page: Int,
-    val params: String,
-    val processingTimeMS: Int,
-    val processingTimingsMS: ProcessingTimingsMSDto,
-    val query: String,
-    val serverTimeMS: Int
+    @SerializedName("exhaustive") val exhaustive: ExhaustiveDto,
+    @SerializedName("exhaustiveNbHits") val exhaustiveNbHits: Boolean,
+    @SerializedName("exhaustiveTypo") val exhaustiveTypo: Boolean,
+    @SerializedName("hits") val hits: List<HitDto>,
+    @SerializedName("hitsPerPage") val hitsPerPage: Int,
+    @SerializedName("nbHits") val nbHits: Int,
+    @SerializedName("nbPages") val nbPages: Int,
+    @SerializedName("page") val page: Int,
+    @SerializedName("params") val params: String,
+    @SerializedName("processingTimeMS") val processingTimeMS: Int,
+    @SerializedName("processingTimingsMS") val processingTimingsMS: ProcessingTimingsMSDto,
+    @SerializedName("query") val query: String,
+    @SerializedName("serverTimeMS") val serverTimeMS: Int
 )

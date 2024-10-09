@@ -26,8 +26,9 @@
 
 * mappers for data usage outside of domain
 
-* I hope to demonstrate enough.
 
 * dependency injection with dagger hilt
+* I try to emulate the flow with special branches 
 
+* I hope to demonstrate enough.
 # Greetings!!!

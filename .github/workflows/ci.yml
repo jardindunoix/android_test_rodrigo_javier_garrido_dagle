@@ -2,9 +2,9 @@ name: Android CI
 
 on:
   push:
-    branches: [ "database" ]
+    branches: [ "usecases" ]
   pull_request:
-    branches: [ "database" ]
+    branches: [ "usecases" ]
 
 jobs:
   build:

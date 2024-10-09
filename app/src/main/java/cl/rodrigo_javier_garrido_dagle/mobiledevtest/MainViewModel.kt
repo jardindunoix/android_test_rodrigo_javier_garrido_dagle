@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import cl.rodrigo_javier_garrido_dagle.mobiledevtest.domain.repositories.ConnectivityRepository
-import cl.rodrigo_javier_garrido_dagle.mobiledevtest.domain.usecases.NetworkUsecases
+import cl.rodrigo_javier_garrido_dagle.mobiledevtest.domain.usecases.HitUsecases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -12,7 +12,7 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(
     connectivityRepository: ConnectivityRepository,
-    private val networkUsecases: NetworkUsecases,
+    private val networkUsecases: HitUsecases,
 ) : ViewModel() {
     val isOnline = connectivityRepository.isConnected.asLiveData()
 

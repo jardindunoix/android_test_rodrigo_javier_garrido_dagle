@@ -12,6 +12,11 @@ interface HitsDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAllData(list: List<HitEntity>)
 
-    @Query("SELECT * FROM hit")
+    @Query("SELECT * FROM hit ORDER BY created_at_id DESC")
     suspend fun getAllData(): List<HitEntity>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertHit(hit: HitEntity) {
+
+    }
 }
