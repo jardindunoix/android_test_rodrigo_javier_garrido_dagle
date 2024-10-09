@@ -10,6 +10,7 @@
 
 * Environment and language chosen
     - Android - Kotlin
+    - Version Catalog
 
 * The local.properties is ignored, so it is necesary to add:
     - **URL_BASE="https://hn.algolia.com"**
