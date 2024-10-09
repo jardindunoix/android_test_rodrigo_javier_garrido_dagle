@@ -1,0 +1,1 @@
+package cl.rodrigo_javier_garrido_dagle.mobiledevtest.ui.navigationsealed class AppScreens(val route: String) {   data object MainListScreen : AppScreens("main_list_screen")   data object DetailScreen : AppScreens("detail_screen")}
