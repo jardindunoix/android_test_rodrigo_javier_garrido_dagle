@@ -10,6 +10,6 @@ object Constants {
    //   database
    const val URL_BASE = BuildConfig.URL_BASE
    const val URL_ENDPOINT = BuildConfig.URL_ENDPOINT
-   const val DATABASE_VERSION = 1
+   const val DATABASE_VERSION = 2
    const val DATABASE_NAME = "hit_database"
 }
