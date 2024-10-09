@@ -2,9 +2,9 @@ package cl.rodrigo_javier_garrido_dagle.mobiledevtest.domain.model
 
 data class Hit(
 //    val highlightResult: HighlightResult,
-    val tags: List<String>?,
+    val tags: List<String?>?,
     val author: String?,
-    val children: List<Int>?,
+    val children: List<Int?>?,
     val commentText: String?,
     val createdAt: String?,
     val createdAtI: Int?,
