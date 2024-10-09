@@ -27,6 +27,7 @@
 * mappers for data usage outside of domain
 
 * I hope to demonstrate enough.
-*
+
+* dependency injection with dagger hilt
 
 # Greetings!!!
