@@ -25,3 +25,8 @@
 * Jetpack Compose ui for the list view
 
 * mappers for data usage outside of domain
+
+* I hope to demonstrate enough.
+*
+
+# Greetings!!!
