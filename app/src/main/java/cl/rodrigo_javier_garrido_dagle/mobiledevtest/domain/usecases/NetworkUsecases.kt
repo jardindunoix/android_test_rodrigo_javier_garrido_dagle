@@ -1,7 +1,9 @@
 package cl.rodrigo_javier_garrido_dagle.mobiledevtest.domain.usecases
 
+import android.util.Log
 import cl.rodrigo_javier_garrido_dagle.mobiledevtest.domain.mappers.networkToDomain
 import cl.rodrigo_javier_garrido_dagle.mobiledevtest.domain.repositories.NetworkRepositoryImpl
+import cl.rodrigo_javier_garrido_dagle.mobiledevtest.utilities.Constants.TAG
 import javax.inject.Inject
 
 class NetworkUsecases @Inject constructor(
@@ -9,7 +11,7 @@ class NetworkUsecases @Inject constructor(
 ) {
    suspend operator fun invoke() = networkRepository
       .getAllHits()
-      ?.map {
-         it.networkToDomain()
+      ?.map { hit ->
+         hit.networkToDomain()
       }
 }
