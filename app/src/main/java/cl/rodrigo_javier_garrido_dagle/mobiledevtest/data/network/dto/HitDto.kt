@@ -3,8 +3,6 @@ package cl.rodrigo_javier_garrido_dagle.mobiledevtest.data.network.dto
 import com.google.gson.annotations.SerializedName
 
 data class HitDto(
-//    @SerializedName(value = "id")
-//    val id: Int,
     @SerializedName(value = "_highlightResult")
     val highlightResult: HighlightResultDto,
     @SerializedName(value = "_tags")

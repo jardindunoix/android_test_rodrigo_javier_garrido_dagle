@@ -7,11 +7,11 @@ import java.util.UUID
 
 @Entity(
     tableName = "hit",
-    primaryKeys = ["id", "created_at_id"]
+//    primaryKeys = ["id", "created_at_id"]
 )
 data class HitEntity(
     @ColumnInfo(name = "id")
-    var id: String =  UUID.randomUUID().toString(),
+    var id: String = UUID.randomUUID().toString(),
 
     @ColumnInfo(name = "tags")
     val tags: List<String?>?,
@@ -24,6 +24,7 @@ data class HitEntity(
     @ColumnInfo(name = "created_at")
     val createdAt: String?,
 
+    @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "created_at_id")
     var createdAtI: Int = -1,
 
@@ -48,5 +49,7 @@ data class HitEntity(
     @ColumnInfo(name = "updated_at")
     val updatedAt: String?,
     @ColumnInfo(name = "url")
-    val url: String?
+    val url: String?,
+    @ColumnInfo(name = "is_showed")
+    val isShowed: Boolean = true,
 )
