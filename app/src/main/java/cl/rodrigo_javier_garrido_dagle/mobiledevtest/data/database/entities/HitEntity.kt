@@ -3,15 +3,15 @@ package cl.rodrigo_javier_garrido_dagle.mobiledevtest.data.database.entities
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.util.UUID
 
 @Entity(
     tableName = "hit",
-//    primaryKeys = ["id", "created_at_id"]
+    primaryKeys = ["id", "created_at_id"]
 )
 data class HitEntity(
-    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    var id: Int = 0,// = UUID.randomUUID().toString(),
+    var id: String =  UUID.randomUUID().toString(),
 
     @ColumnInfo(name = "tags")
     val tags: List<String?>?,

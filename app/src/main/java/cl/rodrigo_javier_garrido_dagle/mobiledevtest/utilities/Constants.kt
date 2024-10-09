@@ -4,12 +4,12 @@ import cl.rodrigo_javier_garrido_dagle.mobiledevtest.BuildConfig
 
 
 object Constants {
-   //  debug
+   // debug
    const val TAG = "TAG------>"
 
-   //   database
+   // database
    const val URL_BASE = BuildConfig.URL_BASE
    const val URL_ENDPOINT = BuildConfig.URL_ENDPOINT
-   const val DATABASE_VERSION = 5
+   const val DATABASE_VERSION = 4
    const val DATABASE_NAME = "hit_database"
 }
