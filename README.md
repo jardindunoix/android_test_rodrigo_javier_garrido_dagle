@@ -19,4 +19,6 @@
     - **curl -i -H "Accept: application/json" -H "Content-Type: application/json" -X
       GET https://hn.algolia.com/api/v1/search_by_date\?query\=mobile**
 
-* check the action's workflow in github   
+* CI CD with github actions, so check the action's workflow
+
+* Jetpack Compose ui for the list view
