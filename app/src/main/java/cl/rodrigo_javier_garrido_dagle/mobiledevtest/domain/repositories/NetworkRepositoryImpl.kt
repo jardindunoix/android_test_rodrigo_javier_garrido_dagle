@@ -7,21 +7,21 @@ import cl.rodrigo_javier_garrido_dagle.mobiledevtest.utilities.Constants.TAG
 import javax.inject.Inject
 
 class NetworkRepositoryImpl @Inject constructor(
-   private val apiCalls: ApiCalls
+    private val apiCalls: ApiCalls
 ) : NetworkRepository {
 
-   override suspend fun getAllHits(): List<HitDto>? {
-      runCatching { apiCalls.getAllHit() }
-         .onSuccess {
-            return it.body()?.hits
-         }
-         .onFailure {
-            Log.d(
-               TAG,
-               "There is an error in the api call::> ${it.message}"
-            )
-         }
-      return null
-   }
+    override suspend fun getAllHits(): List<HitDto>? {
+        runCatching { apiCalls.getAllHit() }
+            .onSuccess {
+                return it.body()?.hits
+            }
+            .onFailure {
+                Log.d(
+                    TAG,
+                    "There is an error in the api call::> ${it.message}"
+                )
+            }
+        return null
+    }
 
 }
