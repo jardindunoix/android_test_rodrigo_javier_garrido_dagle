@@ -3,7 +3,7 @@ package cl.rodrigo_javier_garrido_dagle.mobiledevtest
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import cl.rodrigo_javier_garrido_dagle.mobiledevtest.data.network.NetworkRepositoryImpl
+import cl.rodrigo_javier_garrido_dagle.mobiledevtest.domain.repositories.NetworkRepositoryImpl
 import cl.rodrigo_javier_garrido_dagle.mobiledevtest.domain.repositories.ConnectivityRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch

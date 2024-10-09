@@ -1,8 +1,8 @@
-package cl.rodrigo_javier_garrido_dagle.mobiledevtest.data.network
+package cl.rodrigo_javier_garrido_dagle.mobiledevtest.domain.repositories
 
 import android.util.Log
+import cl.rodrigo_javier_garrido_dagle.mobiledevtest.data.network.ApiCalls
 import cl.rodrigo_javier_garrido_dagle.mobiledevtest.data.network.dto.HitDto
-import cl.rodrigo_javier_garrido_dagle.mobiledevtest.domain.repositories.NetworkRepository
 import cl.rodrigo_javier_garrido_dagle.mobiledevtest.utilities.Constants.TAG
 import javax.inject.Inject
 
