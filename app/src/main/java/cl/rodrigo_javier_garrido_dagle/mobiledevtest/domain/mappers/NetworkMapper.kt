@@ -1,11 +1,9 @@
 package cl.rodrigo_javier_garrido_dagle.mobiledevtest.domain.mappers
 
 import cl.rodrigo_javier_garrido_dagle.mobiledevtest.data.network.dto.HitDto
-import cl.rodrigo_javier_garrido_dagle.mobiledevtest.domain.model.HighlightResult
 import cl.rodrigo_javier_garrido_dagle.mobiledevtest.domain.model.Hit
 
 fun HitDto.networkToDomain() = Hit(
-   highlightResult = highlightResult as HighlightResult,
    tags = tags,
    author = author,
    children = children,
@@ -22,5 +20,5 @@ fun HitDto.networkToDomain() = Hit(
    storyUrl = storyUrl,
    title = title,
    updatedAt = updatedAt,
-   url = url,
+   url = url
 )

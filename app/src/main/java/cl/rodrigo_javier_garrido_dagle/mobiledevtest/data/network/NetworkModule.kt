@@ -2,6 +2,7 @@ package cl.rodrigo_javier_garrido_dagle.mobiledevtest.data.network
 
 import cl.rodrigo_javier_garrido_dagle.mobiledevtest.data.network.interceptors.HeaderInterceptor
 import cl.rodrigo_javier_garrido_dagle.mobiledevtest.domain.repositories.NetworkRepository
+import cl.rodrigo_javier_garrido_dagle.mobiledevtest.domain.repositories.NetworkRepositoryImpl
 import cl.rodrigo_javier_garrido_dagle.mobiledevtest.utilities.Constants.URL_BASE
 import dagger.Module
 import dagger.Provides
