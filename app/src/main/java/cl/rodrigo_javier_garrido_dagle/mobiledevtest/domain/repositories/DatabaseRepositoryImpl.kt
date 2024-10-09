@@ -12,16 +12,24 @@ class DatabaseRepositoryImpl @Inject constructor(
 
     override suspend fun getAllHits(): List<HitEntity>? {
         runCatching { dao.getAllData() }
-            .onSuccess {
-                return it
+            .onSuccess { list ->
+                return list
             }
             .onFailure {
                 Log.d(
                     TAG,
-                    "There is an error in the api call::> ${it.message}"
+                    "There is an error in the DATABASE::> ${it.message}"
                 )
             }
         return null
+    }
+
+    override suspend fun insertAllHits(hits: List<HitEntity>?) {
+        dao.insertAllData(hits!!)
+    }
+
+    override suspend fun insertHit(hit: HitEntity) {
+        dao.insertHit(hit)
     }
 
 }

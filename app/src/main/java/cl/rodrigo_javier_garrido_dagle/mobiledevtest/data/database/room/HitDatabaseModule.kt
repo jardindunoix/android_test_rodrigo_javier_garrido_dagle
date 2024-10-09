@@ -27,6 +27,7 @@ object HitDatabaseModule {
             HitsDatabase::class.java,
             DATABASE_NAME
         )
+        .fallbackToDestructiveMigration()
         .build()
 
     @Singleton

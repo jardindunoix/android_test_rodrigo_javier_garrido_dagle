@@ -18,7 +18,7 @@ class NetworkRepositoryImpl @Inject constructor(
             .onFailure {
                 Log.d(
                     TAG,
-                    "There is an error in the api call::> ${it.message}"
+                    "There is an error in the api call::> ${it.message} ${it.localizedMessage} ${it.cause}"
                 )
             }
         return null

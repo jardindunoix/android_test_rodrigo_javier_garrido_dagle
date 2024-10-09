@@ -14,4 +14,9 @@ interface HitsDao {
 
     @Query("SELECT * FROM hit")
     suspend fun getAllData(): List<HitEntity>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertHit(hit: HitEntity) {
+
+    }
 }

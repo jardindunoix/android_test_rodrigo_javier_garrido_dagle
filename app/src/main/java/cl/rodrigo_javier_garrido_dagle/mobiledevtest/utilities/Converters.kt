@@ -8,48 +8,42 @@ import java.util.Date
 
 class Converters {
 
-   @TypeConverter
-   fun fromString(value: String?): List<String> {
-      val listType = object : TypeToken<List<String>>() {}.type
-      return Gson().fromJson(
-         value,
-         listType
-      )
-   }
+    @TypeConverter
+    fun fromString(value: String?): List<String> {
+        val listType = object : TypeToken<List<String>>() {}.type
+        return Gson().fromJson(
+            value,
+            listType
+        )
+    }
 
-   @TypeConverter
-   fun fromArrayList(list: List<String?>?): String {
-      return Gson().toJson(list)
-   }
+    @TypeConverter
+    fun fromArrayList(list: List<String?>?): String = Gson().toJson(list)
 
+    @TypeConverter
+    fun fromListIntToString(intList: List<Int?>?): String =  Gson().toJson(intList)
 
-   @TypeConverter
-   fun fromListIntToString(intList: List<Int>): String = intList.toString()
+    @TypeConverter
+    fun toListIntFromString(stringList: String): List<Int> {
+        val result = ArrayList<Int>()
+        val split = stringList.replace("[", "").replace("]", "").replace(" ", "").split(",")
+        for (n in split) {
+            try {
+                result.add(n.toInt())
+            } catch (e: Exception) {
 
-   @TypeConverter
-   fun toListIntFromString(stringList: String): List<Int> {
-      val result = ArrayList<Int>()
-      val split =stringList.replace("[","").replace("]","").replace(" ","").split(",")
-      for (n in split) {
-         try {
-            result.add(n.toInt())
-         } catch (e: Exception) {
+            }
+        }
+        return result
+    }
 
-         }
-      }
-      return result
-   }
+    @TypeConverter
+    fun fromTimestamp(value: Long?): Date? {
+        return if (value == null) null else Date(value)
+    }
 
-
-
-
-   @TypeConverter
-   fun fromTimestamp(value: Long?): Date? {
-      return if (value == null) null else Date(value)
-   }
-
-   @TypeConverter
-   fun dateToTimestamp(date: Date?): Long? {
-      return date?.time
-   }
+    @TypeConverter
+    fun dateToTimestamp(date: Date?): Long? {
+        return date?.time
+    }
 }

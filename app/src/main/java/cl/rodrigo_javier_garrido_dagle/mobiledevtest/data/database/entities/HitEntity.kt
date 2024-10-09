@@ -5,12 +5,14 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(
-    tableName = "hit"
+    tableName = "hit",
+//    primaryKeys = ["id", "created_at_id"]
 )
 data class HitEntity(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    val id: Int,
+    var id: Int = 0,// = UUID.randomUUID().toString(),
+
     @ColumnInfo(name = "tags")
     val tags: List<String?>?,
     @ColumnInfo(name = "author")
@@ -21,8 +23,10 @@ data class HitEntity(
     val commentText: String?,
     @ColumnInfo(name = "created_at")
     val createdAt: String?,
+
     @ColumnInfo(name = "created_at_id")
-    val createdAtI: Int?,
+    var createdAtI: Int = -1,
+
     @ColumnInfo(name = "num_comments")
     val numComments: Int?,
     @ColumnInfo(name = "object_id")
