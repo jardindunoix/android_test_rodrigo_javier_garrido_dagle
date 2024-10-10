@@ -16,13 +16,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import cl.rodrigo_javier_garrido_dagle.mobiledevtest.MainViewModel
 import cl.rodrigo_javier_garrido_dagle.mobiledevtest.domain.model.Hit
+import cl.rodrigo_javier_garrido_dagle.mobiledevtest.utilities.Constants.DETAIL_SCREEN
 import kotlinx.coroutines.CoroutineScope
 
 @Composable
@@ -89,7 +89,7 @@ fun ColumnItem(
             .padding(10.dp)
             .wrapContentSize()
             .clickable {
-                navController.navigate(route= "detail_screen")
+                navController.navigate(route = DETAIL_SCREEN)
             },
         colors = CardDefaults.cardColors(
             containerColor = Color.White

@@ -12,4 +12,8 @@ object Constants {
    const val URL_ENDPOINT = BuildConfig.URL_ENDPOINT
    const val DATABASE_VERSION = 6
    const val DATABASE_NAME = "hit_database"
+
+   // screens
+   const val MAIN_LIST_SCREEN = "main_list"
+   const val DETAIL_SCREEN = "main_list"
 }
