@@ -19,11 +19,9 @@ class HitUsecases @Inject constructor(
         val listDDBB = databaseRepository.getAllHits()
 
         if (listDDBB!!.isEmpty()) {
-            Log.d(TAG, "DDBB EMPTY ${listDDBB.size}")
             databaseRepository.insertAllHits(listNetwork!!.map { it.networkToEntity() })
             return listNetwork.map { it.networkToDomain() }
         } else {
-            Log.d(TAG, "NETWORK TO UI DDBB::${listDDBB.size}")
             databaseRepository.insertAllHits(listNetwork!!.map { it.networkToEntity() })
             return listDDBB.map { it.entityToDomain() }
         }

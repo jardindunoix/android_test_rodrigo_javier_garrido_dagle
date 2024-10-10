@@ -46,4 +46,12 @@ class Converters {
     fun dateToTimestamp(date: Date?): Long? {
         return date?.time
     }
+
+    companion object {
+        fun <T> List<T>.listToArrayList(): ArrayList<T> {
+            val array: ArrayList<T> = ArrayList()
+            for (index in this) array.add(index)
+            return array
+        }
+    }
 }
