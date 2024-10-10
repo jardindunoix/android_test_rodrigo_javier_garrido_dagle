@@ -47,7 +47,7 @@ fun MainListScreen(
     navController: NavHostController,
     viewModel: MainViewModel,
     modifier: Modifier = Modifier,
-    hits_: List<Hit>
+    hits: List<Hit>
 ) {
     val isLoading by viewModel.isLoading.collectAsState()
     val swipeRefreshState = rememberSwipeRefreshState(isRefreshing = isLoading)
@@ -60,67 +60,144 @@ fun MainListScreen(
             SwipeRefreshIndicator(state = state, refreshTriggerDistance = refreshTriugger)
         }
     ) {
-        val hits = remember {
-            mutableStateListOf(
-                Hit(
-                    createdAtI = 3,
-                    author = "Author",
-                    children = emptyList(),
-                    commentText = "",
-                    createdAt = "",
-                    numComments = 0,
-                    objectID = "",
-                    parentId = 0,
-                    points = 0,
-                    storyId = 0,
-                    storyText = "ASDASDASda sadad asdas asdsa dasd asdsa dadadadvac cdscd sacsd cds dsc dsc sac sdc asd ca sdc as dcs dc casdcdcdsc cds cdscdascdc dccqcqf d vdv",
-                    storyTitle = "",
-                    storyUrl = "https://asddsdsa.sd",
-                    tags = emptyList(),
-                    title = "El mejor!!!!",
-                    updatedAt = "2000-12-01",
-                    url = ""
-                ),
-                Hit(
-                    createdAtI = 4,
-                    author = "Author",
-                    children = emptyList(),
-                    commentText = "",
-                    createdAt = "",
-                    numComments = 0,
-                    objectID = "",
-                    parentId = 0,
-                    points = 0,
-                    storyId = 0,
-                    storyText = "ASDASDASda sadad asdas asdsa dasd asdsa dadadadvac cdscd sacsd cds dsc dsc sac sdc asd ca sdc as dcs dc casdcdcdsc cds cdscdascdc dccqcqf d vdv",
-                    storyTitle = "",
-                    storyUrl = "https://asddsdsa.sd",
-                    tags = emptyList(),
-                    title = "El mejor!!!!",
-                    updatedAt = "2000-12-01",
-                    url = ""
-                ),
-                Hit(
-                    createdAtI = 4,
-                    author = "Author",
-                    children = emptyList(),
-                    commentText = "",
-                    createdAt = "",
-                    numComments = 0,
-                    objectID = "",
-                    parentId = 0,
-                    points = 0,
-                    storyId = 0,
-                    storyText = "ASDASDASda sadad asdas asdsa dasd asdsa dadadadvac cdscd sacsd cds dsc dsc sac sdc asd ca sdc as dcs dc casdcdcdsc cds cdscdascdc dccqcqf d vdv",
-                    storyTitle = "",
-                    storyUrl = "https://asddsdsa.sd",
-                    tags = emptyList(),
-                    title = "El mejor!!!!",
-                    updatedAt = "2000-12-01",
-                    url = ""
-                ),
-            )
-        }
+
+//        var hits = remember {
+//            mutableStateListOf(
+//                Hit(
+//                    createdAtI = 3,
+//                    author = "Author",
+//                    children = emptyList(),
+//                    commentText = "",
+//                    createdAt = "",
+//                    numComments = 0,
+//                    objectID = "",
+//                    parentId = 0,
+//                    points = 0,
+//                    storyId = 0,
+//                    storyText = "ASDASDASda sadad asdas asdsa dasd asdsa dadadadvac cdscd sacsd cds dsc dsc sac sdc asd ca sdc as dcs dc casdcdcdsc cds cdscdascdc dccqcqf d vdv",
+//                    storyTitle = "",
+//                    storyUrl = "https://asddsdsa.sd",
+//                    tags = emptyList(),
+//                    title = "El mejor!!!!",
+//                    updatedAt = "2000-12-01",
+//                    url = ""
+//                ),
+//                Hit(
+//                    createdAtI = 4,
+//                    author = "Author",
+//                    children = emptyList(),
+//                    commentText = "",
+//                    createdAt = "",
+//                    numComments = 0,
+//                    objectID = "",
+//                    parentId = 0,
+//                    points = 0,
+//                    storyId = 0,
+//                    storyText = "ASDASDASda sadad asdas asdsa dasd asdsa dadadadvac cdscd sacsd cds dsc dsc sac sdc asd ca sdc as dcs dc casdcdcdsc cds cdscdascdc dccqcqf d vdv",
+//                    storyTitle = "",
+//                    storyUrl = "https://asddsdsa.sd",
+//                    tags = emptyList(),
+//                    title = "El mejor!!!!",
+//                    updatedAt = "2000-12-01",
+//                    url = ""
+//                ),
+//                Hit(
+//                    createdAtI = 5,
+//                    author = "Author",
+//                    children = emptyList(),
+//                    commentText = "",
+//                    createdAt = "",
+//                    numComments = 0,
+//                    objectID = "",
+//                    parentId = 0,
+//                    points = 0,
+//                    storyId = 0,
+//                    storyText = "ASDASDASda sadad asdas asdsa dasd asdsa dadadadvac cdscd sacsd cds dsc dsc sac sdc asd ca sdc as dcs dc casdcdcdsc cds cdscdascdc dccqcqf d vdv",
+//                    storyTitle = "",
+//                    storyUrl = "https://asddsdsa.sd",
+//                    tags = emptyList(),
+//                    title = "El mejor!!!!",
+//                    updatedAt = "2000-12-01",
+//                    url = ""
+//                ),
+//                Hit(
+//                    createdAtI = 5,
+//                    author = "Author",
+//                    children = emptyList(),
+//                    commentText = "",
+//                    createdAt = "",
+//                    numComments = 0,
+//                    objectID = "",
+//                    parentId = 0,
+//                    points = 0,
+//                    storyId = 0,
+//                    storyText = "ASDASDASda sadad asdas asdsa dasd asdsa dadadadvac cdscd sacsd cds dsc dsc sac sdc asd ca sdc as dcs dc casdcdcdsc cds cdscdascdc dccqcqf d vdv",
+//                    storyTitle = "",
+//                    storyUrl = "https://asddsdsa.sd",
+//                    tags = emptyList(),
+//                    title = "El mejor!!!!",
+//                    updatedAt = "2000-12-01",
+//                    url = ""
+//                ),
+//                Hit(
+//                    createdAtI = 5,
+//                    author = "Author",
+//                    children = emptyList(),
+//                    commentText = "",
+//                    createdAt = "",
+//                    numComments = 0,
+//                    objectID = "",
+//                    parentId = 0,
+//                    points = 0,
+//                    storyId = 0,
+//                    storyText = "ASDASDASda sadad asdas asdsa dasd asdsa dadadadvac cdscd sacsd cds dsc dsc sac sdc asd ca sdc as dcs dc casdcdcdsc cds cdscdascdc dccqcqf d vdv",
+//                    storyTitle = "",
+//                    storyUrl = "https://asddsdsa.sd",
+//                    tags = emptyList(),
+//                    title = "El mejor!!!!",
+//                    updatedAt = "2000-12-01",
+//                    url = ""
+//                ),
+//                Hit(
+//                    createdAtI = 5,
+//                    author = "Author",
+//                    children = emptyList(),
+//                    commentText = "",
+//                    createdAt = "",
+//                    numComments = 0,
+//                    objectID = "",
+//                    parentId = 0,
+//                    points = 0,
+//                    storyId = 0,
+//                    storyText = "ASDASDASda sadad asdas asdsa dasd asdsa dadadadvac cdscd sacsd cds dsc dsc sac sdc asd ca sdc as dcs dc casdcdcdsc cds cdscdascdc dccqcqf d vdv",
+//                    storyTitle = "",
+//                    storyUrl = "https://asddsdsa.sd",
+//                    tags = emptyList(),
+//                    title = "El mejor!!!!",
+//                    updatedAt = "2000-12-01",
+//                    url = ""
+//                ),
+//                Hit(
+//                    createdAtI = 5,
+//                    author = "Author",
+//                    children = emptyList(),
+//                    commentText = "",
+//                    createdAt = "",
+//                    numComments = 0,
+//                    objectID = "",
+//                    parentId = 0,
+//                    points = 0,
+//                    storyId = 0,
+//                    storyText = "ASDASDASda sadad asdas asdsa dasd asdsa dadadadvac cdscd sacsd cds dsc dsc sac sdc asd ca sdc as dcs dc casdcdcdsc cds cdscdascdc dccqcqf d vdv",
+//                    storyTitle = "",
+//                    storyUrl = "https://asddsdsa.sd",
+//                    tags = emptyList(),
+//                    title = "El mejor!!!!",
+//                    updatedAt = "2000-12-01",
+//                    url = ""
+//                ),
+//            )
+//        }
 
         LazyColumn(
             contentPadding = PaddingValues(0.dp),
@@ -129,10 +206,14 @@ fun MainListScreen(
             val itemCount = hits.size
             items(itemCount) { item ->
                 val dismissState = rememberSwipeToDismissBoxState(
-                    confirmValueChange = {
-                        if (it == SwipeToDismissBoxValue.EndToStart) {
+                    confirmValueChange = { boxToSwipe ->
+                        if (boxToSwipe == SwipeToDismissBoxValue.EndToStart) {
                             Log.d(TAG, "MainListScreen: $item")
-                            hits.removeAt(item)
+                            val itemToDelete = hits.filter { innerItem ->
+                                hits[item].createdAtI == innerItem.createdAtI
+                            }
+                            Log.d(TAG, "$itemToDelete")
+//                            hits.remove(itemToDelete)
                             true
                         } else {
                             false
