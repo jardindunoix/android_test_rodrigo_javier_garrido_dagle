@@ -26,9 +26,14 @@
 
 * mappers for data usage outside of domain
 
-
 * dependency injection with dagger hilt
-* I try to emulate the flow with special branches 
+* I try to emulate the flow with special branches
+
+* Do I had to deal with problems? for sure!
+
+- The Swipe-to-Delete funcionality is depreated in some parts, so a had to ivestigate how to solve
+  it.
 
 * I hope to demonstrate enough.
+
 # Greetings!!!
