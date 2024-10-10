@@ -1,12 +1,11 @@
 package cl.rodrigo_javier_garrido_dagle.mobiledevtest
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
-import androidx.lifecycle.viewModelScope
 import cl.rodrigo_javier_garrido_dagle.mobiledevtest.domain.repositories.ConnectivityRepository
 import cl.rodrigo_javier_garrido_dagle.mobiledevtest.domain.usecases.HitUsecases
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -15,15 +14,15 @@ class MainViewModel @Inject constructor(
     private val networkUsecases: HitUsecases,
 ) : ViewModel() {
     val isOnline = connectivityRepository.isConnected.asLiveData()
+    private val _isLoding = MutableLiveData<Boolean>()
 
-    init {
-        getAllHits()
-    }
+//    init {
+//        getAllHits()
+//    }
 
-    private fun getAllHits() {
-        viewModelScope.launch {
-            networkUsecases.invoke()
-
+    suspend fun getAllHits() {
+//        viewModelScope.launch {
+        networkUsecases.invoke()
 //            list!!.map { hit ->
 //                val author = hit.author
 //                val createdAtId = hit.createdAtI
@@ -36,8 +35,7 @@ class MainViewModel @Inject constructor(
 //                    TAG,
 //                    "$createdAtId  -- $storyText"
 //                )
-
 //        }
-        }
+//        }
     }
 }
