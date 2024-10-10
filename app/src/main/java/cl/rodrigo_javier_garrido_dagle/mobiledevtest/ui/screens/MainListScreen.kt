@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
@@ -15,6 +14,8 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -26,6 +27,9 @@ import androidx.navigation.NavHostController
 import cl.rodrigo_javier_garrido_dagle.mobiledevtest.MainViewModel
 import cl.rodrigo_javier_garrido_dagle.mobiledevtest.domain.model.Hit
 import cl.rodrigo_javier_garrido_dagle.mobiledevtest.utilities.Constants.DETAIL_SCREEN
+import com.google.accompanist.swiperefresh.SwipeRefresh
+import com.google.accompanist.swiperefresh.SwipeRefreshIndicator
+import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
 
 @Composable
 fun MainListScreen(
@@ -34,20 +38,31 @@ fun MainListScreen(
     modifier: Modifier = Modifier,
     hits: List<Hit>
 ) {
-
-    Spacer(Modifier.padding(25.dp))
-    LazyColumn(
-        contentPadding = PaddingValues(1.dp),
+    val isLoading by viewModel.isLoading.collectAsState()
+    val swipeRefreshState = rememberSwipeRefreshState(isRefreshing = isLoading)
+    SwipeRefresh(
+        state = swipeRefreshState,
+        onRefresh = { viewModel.isLoading },
+        indicator = { state, refreshTriugger ->
+            SwipeRefreshIndicator(state = state, refreshTriggerDistance = refreshTriugger)
+        }
     ) {
-        val itemCount = hits.size
-        items(itemCount) {
-            ColumnItem(
-                modifier,
-                hit = hits[it],
-                navController = navController,
-            )
+
+        LazyColumn(
+            contentPadding = PaddingValues(1.dp),
+        ) {
+
+            val itemCount = hits.size
+            items(itemCount) {
+                ColumnItem(
+                    modifier,
+                    hit = hits[it],
+                    navController = navController,
+                )
+            }
         }
     }
+
 }
 
 @Composable
