@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
@@ -23,6 +22,8 @@ import androidx.compose.material3.rememberSwipeToDismissBoxState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -44,10 +45,12 @@ fun MainListScreen(
     navController: NavHostController,
     viewModel: MainViewModel,
     modifier: Modifier = Modifier,
-    hits: List<Hit>
+    hits_: List<Hit>
 ) {
     val isLoading by viewModel.isLoading.collectAsState()
     val swipeRefreshState = rememberSwipeRefreshState(isRefreshing = isLoading)
+
+
     SwipeRefresh(
         state = swipeRefreshState,
         onRefresh = { viewModel.isLoading },
@@ -55,6 +58,48 @@ fun MainListScreen(
             SwipeRefreshIndicator(state = state, refreshTriggerDistance = refreshTriugger)
         }
     ) {
+        val hits = remember {
+            mutableStateListOf(
+                Hit(
+                    createdAtI = 3,
+                    author = "Author",
+                    children = emptyList(),
+                    commentText = "",
+                    createdAt = "",
+                    numComments = 0,
+                    objectID = "",
+                    parentId = 0,
+                    points = 0,
+                    storyId = 0,
+                    storyText = "ASDASDASda sadad asdas asdsa dasd asdsa dadadadvac cdscd sacsd cds dsc dsc sac sdc asd ca sdc as dcs dc casdcdcdsc cds cdscdascdc dccqcqf d vdv",
+                    storyTitle = "",
+                    storyUrl = "https://asddsdsa.sd",
+                    tags = emptyList(),
+                    title = "El mejor!!!!",
+                    updatedAt = "2000-12-01",
+                    url = ""
+                ),
+                Hit(
+                    createdAtI = 4,
+                    author = "Author",
+                    children = emptyList(),
+                    commentText = "",
+                    createdAt = "",
+                    numComments = 0,
+                    objectID = "",
+                    parentId = 0,
+                    points = 0,
+                    storyId = 0,
+                    storyText = "ASDASDASda sadad asdas asdsa dasd asdsa dadadadvac cdscd sacsd cds dsc dsc sac sdc asd ca sdc as dcs dc casdcdcdsc cds cdscdascdc dccqcqf d vdv",
+                    storyTitle = "",
+                    storyUrl = "https://asddsdsa.sd",
+                    tags = emptyList(),
+                    title = "El mejor!!!!",
+                    updatedAt = "2000-12-01",
+                    url = ""
+                ),
+            )
+        }
 
         LazyColumn(
             contentPadding = PaddingValues(1.dp),
@@ -65,7 +110,7 @@ fun MainListScreen(
                 val dismissState = rememberSwipeToDismissBoxState(
                     confirmValueChange = {
                         if (it == SwipeToDismissBoxValue.EndToStart) {
-                            hits.drop(item)
+                            hits.removeAt(item)
                             true
                         } else {
                             false
@@ -75,14 +120,26 @@ fun MainListScreen(
                 SwipeToDismissBox(
                     state = dismissState,
                     backgroundContent = {
-                        Box(
+                        Row(
                             modifier = Modifier
-                                .fillMaxSize()
-                                .background(Color.Red)
-                                .padding(horizontal = 20.dp),
-                            contentAlignment = Alignment.CenterEnd,
-                        ) {
-                            Text(text = "Delete")
+                                .padding(vertical = 10.dp),
+
+                            ) {
+                            Box(
+                                modifier = Modifier
+//                                    .fillMaxHeight()
+//                                    .fillMaxWidth()
+                                    .background(Color.Red)
+                                    .padding(horizontal = 120.dp, vertical = 80.dp)
+                                    .align(Alignment.CenterVertically),
+                                contentAlignment = Alignment.CenterEnd,
+                            ) {
+                                Text(
+                                    text = "Delete",
+                                    color = Color.White,
+                                    fontWeight = FontWeight.Bold,
+                                )
+                            }
                         }
 
                     }) {
@@ -95,7 +152,6 @@ fun MainListScreen(
             }
         }
     }
-
 }
 
 @Composable
@@ -114,7 +170,7 @@ fun ColumnItem(
     Card(
         modifier
             .fillMaxWidth()
-            .padding(2.dp)
+            .padding(1.dp)
             .wrapContentSize()
             .padding(1.dp)
             .clickable {
