@@ -63,6 +63,7 @@ fun MainListScreen(
                         true
 
 
+//                        if (boxToSwipe == SwipeToDismissBoxValue.EndToStart) {
 //                            Log.d(TAG, "MainListScreen: $item")
 //                            var itemToDelete: Hit? = null
 //
