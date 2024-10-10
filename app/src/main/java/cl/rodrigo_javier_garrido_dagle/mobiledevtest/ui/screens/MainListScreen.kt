@@ -1,5 +1,6 @@
 package cl.rodrigo_javier_garrido_dagle.mobiledevtest.ui.screens
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -35,6 +36,7 @@ import androidx.navigation.NavHostController
 import cl.rodrigo_javier_garrido_dagle.mobiledevtest.MainViewModel
 import cl.rodrigo_javier_garrido_dagle.mobiledevtest.domain.model.Hit
 import cl.rodrigo_javier_garrido_dagle.mobiledevtest.utilities.Constants.DETAIL_SCREEN
+import cl.rodrigo_javier_garrido_dagle.mobiledevtest.utilities.Constants.TAG
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.SwipeRefreshIndicator
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
@@ -98,11 +100,30 @@ fun MainListScreen(
                     updatedAt = "2000-12-01",
                     url = ""
                 ),
+                Hit(
+                    createdAtI = 4,
+                    author = "Author",
+                    children = emptyList(),
+                    commentText = "",
+                    createdAt = "",
+                    numComments = 0,
+                    objectID = "",
+                    parentId = 0,
+                    points = 0,
+                    storyId = 0,
+                    storyText = "ASDASDASda sadad asdas asdsa dasd asdsa dadadadvac cdscd sacsd cds dsc dsc sac sdc asd ca sdc as dcs dc casdcdcdsc cds cdscdascdc dccqcqf d vdv",
+                    storyTitle = "",
+                    storyUrl = "https://asddsdsa.sd",
+                    tags = emptyList(),
+                    title = "El mejor!!!!",
+                    updatedAt = "2000-12-01",
+                    url = ""
+                ),
             )
         }
 
         LazyColumn(
-            contentPadding = PaddingValues(1.dp),
+            contentPadding = PaddingValues(0.dp),
         ) {
 
             val itemCount = hits.size
@@ -110,6 +131,7 @@ fun MainListScreen(
                 val dismissState = rememberSwipeToDismissBoxState(
                     confirmValueChange = {
                         if (it == SwipeToDismissBoxValue.EndToStart) {
+                            Log.d(TAG, "MainListScreen: $item")
                             hits.removeAt(item)
                             true
                         } else {
