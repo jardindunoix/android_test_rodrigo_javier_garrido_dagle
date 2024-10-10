@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
@@ -37,21 +38,8 @@ fun MainListScreen(
 
 
     LazyColumn(
-        contentPadding = PaddingValues(16.dp),
+        contentPadding = PaddingValues(1.dp),
     ) {
-
-//        coroutineScope.launch {
-//            viewModel.getAllHits()
-//        }
-
-        val names = arrayOf(
-            "Peperoni",
-            "Vegan",
-            "FourCheese",
-            "Margaritta",
-            "American",
-            "Mexican"
-        )
 
         val ingredients = arrayOf(
             "Tomato sos, cheese, oregano, peperoni",
@@ -60,9 +48,39 @@ fun MainListScreen(
             "Tomato sos, cheese, oregano, bazillion",
             "Tomato sos, cheese, oregano, green paprika, red beans",
             "Tomato sos, cheese, oregano, corn, jalapeno, chicken",
+            "Tomato sos, cheese, oregano, peperoniTomato sos, cheese, oregano, peperoniTomato sos, cheese, oregano, peperoniTomato sos, cheese, oregano, peperoniTomato sos, cheese, oregano, peperoniTomato sos, cheese, oregano, peperoniTomato sos, cheese, oregano, peperoni",
+            "Tomato sos, cheese, oregano, spinach, green paprika, rukolaTomato sos, cheese, oregano, spinach, green paprika, rukolaTomato sos, cheese, oregano, spinach, green paprika, rukolaTomato sos, cheese, oregano, spinach, green paprika, rukolaTomato sos, cheese, oregano, spinach, green paprika, rukola",
+            "Tomato sos, oregano, mozzarella, goda, parmesan, cheddar",
+            "Tomato sos, cheese, oregano, bazillion",
+            "Tomato sos, cheese, oregano, green paprika, red beans",
+            "Tomato sos, cheese, oregano, corn, jalapeno, chicken",
+            "Tomato sos, cheese, oregano, peperoni",
+            "Tomato sos, cheese, oregano, spinach, green paprika, rukola",
+            "Tomato sos, oregano, mozzarella, goda, parmesan, cheddar",
+            "Tomato sos, cheese, oregano, bazillion",
+            "Tomato sos, cheese, oregano, green paprika, red beans",
+            "Tomato sos, cheese, oregano, corn, jalapeno, chicken",
+            "Tomato sos, cheese, oregano, peperoni",
+            "Tomato sos, cheese, oregano, spinach, green paprika, rukola",
+            "Tomato sos, oregano, mozzarella, goda, parmesan, cheddar",
+            "Tomato sos, cheese, oregano, bazillion",
+            "Tomato sos, cheese, oregano, green paprika, red beans",
+            "Tomato sos, cheese, oregano, corn, jalapeno, chicken",
+            "Tomato sos, cheese, oregano, peperoniTomato sos, cheese, oregano, peperoniTomato sos, cheese, oregano, peperoniTomato sos, cheese, oregano, peperoniTomato sos, cheese, oregano, peperoniTomato sos, cheese, oregano, peperoniTomato sos, cheese, oregano, peperoni",
+            "Tomato sos, cheese, oregano, spinach, green paprika, rukolaTomato sos, cheese, oregano, spinach, green paprika, rukolaTomato sos, cheese, oregano, spinach, green paprika, rukolaTomato sos, cheese, oregano, spinach, green paprika, rukolaTomato sos, cheese, oregano, spinach, green paprika, rukola",
+            "Tomato sos, oregano, mozzarella, goda, parmesan, cheddar",
+            "Tomato sos, cheese, oregano, bazillion",
+            "Tomato sos, cheese, oregano, green paprika, red beans",
+            "Tomato sos, cheese, oregano, corn, jalapeno, chicken",
+            "Tomato sos, cheese, oregano, peperoni",
+            "Tomato sos, cheese, oregano, spinach, green paprika, rukola",
+            "Tomato sos, oregano, mozzarella, goda, parmesan, cheddar",
+            "Tomato sos, cheese, oregano, bazillion",
+            "Tomato sos, cheese, oregano, green paprika, red beans",
+            "Tomato sos, cheese, oregano, corn, jalapeno, chicken",
         )
 
-        val itemCount = 6
+        val itemCount = ingredients.size
         items(itemCount) {
             ColumnItem(
                 modifier,
@@ -86,23 +104,37 @@ fun ColumnItem(
 
     Card(
         modifier
-            .padding(10.dp)
+            .fillMaxWidth()
+            .padding(2.dp)
             .wrapContentSize()
+            .padding(1.dp)
             .clickable {
                 navController.navigate(route = DETAIL_SCREEN)
             },
         colors = CardDefaults.cardColors(
             containerColor = Color.White
         ),
-        elevation = CardDefaults.cardElevation(10.dp)
+        elevation = CardDefaults.cardElevation(3.dp),
+        shape = RoundedCornerShape(1.dp)
     ) {
         Row(
             modifier.fillMaxWidth(),
             verticalAlignment = Alignment.Top,
-            horizontalArrangement = Arrangement.spacedBy(15.dp)
+            horizontalArrangement = Arrangement.spacedBy(1.dp)
         ) {
-            Column(modifier.padding(12.dp)) {
+            Column(modifier.padding(8.dp)) {
                 Text(text = ingredients[itemIndex], fontSize = 18.sp)
+
+            }
+        }
+
+        Row(
+            modifier.fillMaxWidth(),
+            verticalAlignment = Alignment.Top,
+            horizontalArrangement = Arrangement.spacedBy(1.dp)
+        ) {
+            Column(modifier.padding(8.dp)) {
+                Text(text = "nodesocket - 12h", fontSize = 12.sp, color = Color.Gray)
 
             }
         }

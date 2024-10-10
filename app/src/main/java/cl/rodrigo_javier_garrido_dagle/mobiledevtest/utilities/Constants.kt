@@ -15,5 +15,5 @@ object Constants {
 
    // screens
    const val MAIN_LIST_SCREEN = "main_list"
-   const val DETAIL_SCREEN = "main_list"
+   const val DETAIL_SCREEN = "detail_list"
 }
