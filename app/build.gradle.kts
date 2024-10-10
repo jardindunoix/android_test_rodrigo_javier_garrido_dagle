@@ -157,6 +157,8 @@ dependencies {
    kapt(libs.androidx.google.dagger.kapt.android)
    kapt(libs.androidx.google.compiler)
    kapt(libs.androidx.hilt.compiler.v120)
+   //navigation
+   implementation(libs.androidx.navigation.compose)
 }
 
-//kapt { correctErrorTypes = true }
+kapt { correctErrorTypes = true }

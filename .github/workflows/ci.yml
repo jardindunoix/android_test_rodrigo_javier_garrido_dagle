@@ -2,9 +2,9 @@ name: Android CI
 
 on:
   push:
-    branches: [ "usecases" ]
+    branches: [ "ui-mainlist" ]
   pull_request:
-    branches: [ "usecases" ]
+    branches: [ "ui-mainlist" ]
 
 jobs:
   build:
