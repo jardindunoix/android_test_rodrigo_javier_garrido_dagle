@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.wrapContentSize
@@ -17,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -24,70 +26,25 @@ import androidx.navigation.NavHostController
 import cl.rodrigo_javier_garrido_dagle.mobiledevtest.MainViewModel
 import cl.rodrigo_javier_garrido_dagle.mobiledevtest.domain.model.Hit
 import cl.rodrigo_javier_garrido_dagle.mobiledevtest.utilities.Constants.DETAIL_SCREEN
-import kotlinx.coroutines.CoroutineScope
 
 @Composable
 fun MainListScreen(
     navController: NavHostController,
     viewModel: MainViewModel,
     modifier: Modifier = Modifier,
-    hits: List<Hit>,
-    coroutineScope: CoroutineScope
+    hits: List<Hit>
 ) {
-//    val coroutineScope = rememberCoroutineScope()
 
-
+    Spacer(Modifier.padding(25.dp))
     LazyColumn(
         contentPadding = PaddingValues(1.dp),
     ) {
-
-        val ingredients = arrayOf(
-            "Tomato sos, cheese, oregano, peperoni",
-            "Tomato sos, cheese, oregano, spinach, green paprika, rukola",
-            "Tomato sos, oregano, mozzarella, goda, parmesan, cheddar",
-            "Tomato sos, cheese, oregano, bazillion",
-            "Tomato sos, cheese, oregano, green paprika, red beans",
-            "Tomato sos, cheese, oregano, corn, jalapeno, chicken",
-            "Tomato sos, cheese, oregano, peperoniTomato sos, cheese, oregano, peperoniTomato sos, cheese, oregano, peperoniTomato sos, cheese, oregano, peperoniTomato sos, cheese, oregano, peperoniTomato sos, cheese, oregano, peperoniTomato sos, cheese, oregano, peperoni",
-            "Tomato sos, cheese, oregano, spinach, green paprika, rukolaTomato sos, cheese, oregano, spinach, green paprika, rukolaTomato sos, cheese, oregano, spinach, green paprika, rukolaTomato sos, cheese, oregano, spinach, green paprika, rukolaTomato sos, cheese, oregano, spinach, green paprika, rukola",
-            "Tomato sos, oregano, mozzarella, goda, parmesan, cheddar",
-            "Tomato sos, cheese, oregano, bazillion",
-            "Tomato sos, cheese, oregano, green paprika, red beans",
-            "Tomato sos, cheese, oregano, corn, jalapeno, chicken",
-            "Tomato sos, cheese, oregano, peperoni",
-            "Tomato sos, cheese, oregano, spinach, green paprika, rukola",
-            "Tomato sos, oregano, mozzarella, goda, parmesan, cheddar",
-            "Tomato sos, cheese, oregano, bazillion",
-            "Tomato sos, cheese, oregano, green paprika, red beans",
-            "Tomato sos, cheese, oregano, corn, jalapeno, chicken",
-            "Tomato sos, cheese, oregano, peperoni",
-            "Tomato sos, cheese, oregano, spinach, green paprika, rukola",
-            "Tomato sos, oregano, mozzarella, goda, parmesan, cheddar",
-            "Tomato sos, cheese, oregano, bazillion",
-            "Tomato sos, cheese, oregano, green paprika, red beans",
-            "Tomato sos, cheese, oregano, corn, jalapeno, chicken",
-            "Tomato sos, cheese, oregano, peperoniTomato sos, cheese, oregano, peperoniTomato sos, cheese, oregano, peperoniTomato sos, cheese, oregano, peperoniTomato sos, cheese, oregano, peperoniTomato sos, cheese, oregano, peperoniTomato sos, cheese, oregano, peperoni",
-            "Tomato sos, cheese, oregano, spinach, green paprika, rukolaTomato sos, cheese, oregano, spinach, green paprika, rukolaTomato sos, cheese, oregano, spinach, green paprika, rukolaTomato sos, cheese, oregano, spinach, green paprika, rukolaTomato sos, cheese, oregano, spinach, green paprika, rukola",
-            "Tomato sos, oregano, mozzarella, goda, parmesan, cheddar",
-            "Tomato sos, cheese, oregano, bazillion",
-            "Tomato sos, cheese, oregano, green paprika, red beans",
-            "Tomato sos, cheese, oregano, corn, jalapeno, chicken",
-            "Tomato sos, cheese, oregano, peperoni",
-            "Tomato sos, cheese, oregano, spinach, green paprika, rukola",
-            "Tomato sos, oregano, mozzarella, goda, parmesan, cheddar",
-            "Tomato sos, cheese, oregano, bazillion",
-            "Tomato sos, cheese, oregano, green paprika, red beans",
-            "Tomato sos, cheese, oregano, corn, jalapeno, chicken",
-        )
-
-        val itemCount = ingredients.size
+        val itemCount = hits.size
         items(itemCount) {
             ColumnItem(
                 modifier,
-//                hit = hits[it],
+                hit = hits[it],
                 navController = navController,
-                ingredients = ingredients,
-                itemIndex = it,
             )
         }
     }
@@ -96,11 +53,15 @@ fun MainListScreen(
 @Composable
 fun ColumnItem(
     modifier: Modifier,
-//    hit: Hit,
+    hit: Hit,
     navController: NavController,
-    ingredients: Array<String>,
-    itemIndex: Int,
 ) {
+    val author = hit.author
+    val title = hit.title ?: hit.storyTitle
+    val storyDate = hit.updatedAt ?: hit.createdAt
+    val createdAtId = hit.createdAtI
+    val storyLink = hit.storyUrl ?: "no link"
+    val storyText = hit.storyText ?: hit.commentText
 
     Card(
         modifier
@@ -123,8 +84,7 @@ fun ColumnItem(
             horizontalArrangement = Arrangement.spacedBy(1.dp)
         ) {
             Column(modifier.padding(8.dp)) {
-                Text(text = ingredients[itemIndex], fontSize = 18.sp)
-
+                Text(text = title!!, fontSize = 18.sp, fontWeight = FontWeight.Bold)
             }
         }
 
@@ -134,8 +94,12 @@ fun ColumnItem(
             horizontalArrangement = Arrangement.spacedBy(1.dp)
         ) {
             Column(modifier.padding(8.dp)) {
-                Text(text = "nodesocket - 12h", fontSize = 12.sp, color = Color.Gray)
-
+                Text(
+                    text = "$author - $storyDate",
+                    fontSize = 14.sp,
+                    color = Color.Gray,
+                    fontWeight = FontWeight.Bold
+                )
             }
         }
     }
